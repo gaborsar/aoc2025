@@ -50,7 +50,6 @@ int main()
 	while (read_rotation(f, &dir, &dist))
 	{
 		rotate(&v, &c, dir, dist);
-		printf("the dial is pointing at %d\n", v);
 	}
 
 	fclose(f);

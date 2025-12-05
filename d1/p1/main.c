@@ -52,7 +52,6 @@ int main()
 		{
 			c++;
 		}
-		printf("the dial is pointing at %d\n", v);
 	}
 
 	fclose(f);
