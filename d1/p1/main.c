@@ -8,42 +8,48 @@
 int read_rotation(FILE *f, int *dir, int *dist)
 {
 	char line[128];
-	if (!fgets(line, sizeof(line), f)) {
+
+	if (!fgets(line, sizeof(line), f))
+	{
 		return 0;
 	}
+
 	*dir = line[0] == 'L' ? L : R;
 	*dist = atoi(line + 1);
+
 	return 1;
 }
 
 void rotate(int *v, int dir, int dist)
 {
-	if (dir == L) {
+	if (dir == L)
+	{
 		*v = (N - *v) % N;
 	}
 
 	*v = (*v + dist) % N;
 
-	if (dir == L) {
+	if (dir == L)
+	{
 		*v = (N - *v) % N;
 	}
 }
 
-// code: 1172
-
 int main()
 {
 	FILE *f = NULL;
-	int dir = L;
-	int dist = 0;
+	int dir;
+	int dist;
 	int v = 50;
 	int c = 0;
 
 	f = fopen("input.txt", "r");
 
-	while (read_rotation(f, &dir, &dist)) {
+	while (read_rotation(f, &dir, &dist))
+	{
 		rotate(&v, dir, dist);
-		if (v == 0) {
+		if (v == 0)
+		{
 			c++;
 		}
 		printf("the dial is pointing at %d\n", v);
