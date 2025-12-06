@@ -1,26 +1,30 @@
 #include <stdio.h>
-#include <strings.h>
+#include <string.h>
 #include <stdlib.h>
 
 int main()
 {
-    FILE *f = NULL;
+    FILE *f = fopen("input.txt", "r");
     char line[128];
+    size_t l;
     size_t i1;
     size_t i2;
     int n;
     int max;
     int sum = 0;
 
-    f = fopen("input.txt", "r");
-
     while (fgets(line, sizeof(line), f) != NULL)
     {
         max = 0;
 
-        line[strlen(line) - 1] = '\0';
+        l = strlen(line);
 
-        for (i1 = 1; i1 < strlen(line); i1++)
+        if (line[l - 1] == '\n')
+        {
+            l--;
+        }
+
+        for (i1 = 1; i1 < l; i1++)
         {
             for (i2 = 0; i2 < i1; i2++)
             {
